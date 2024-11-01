@@ -1,0 +1,25 @@
+package Sigida_Kanw.Memoire.Service.Notification;
+
+import Sigida_Kanw.Memoire.Model.Notification;
+import com.google.zxing.WriterException;
+import com.lowagie.text.DocumentException;
+import jakarta.mail.MessagingException;
+
+import java.io.IOException;
+import java.util.List;
+
+public interface Notification_service {
+
+    //Methode pour envoyer un message;
+    void SendMail (Notification notification) throws MessagingException, IOException, DocumentException, WriterException;
+
+    //Methode pour ajouter une notification à la BD.
+    Notification Ajouter (Notification notification);
+
+    //Methode pour Afficher une notification à la BD.
+    List<Notification> Afficher (Integer id);
+
+    //Methode pour supprimer une notification à la BD.
+    String Delete (Integer id);
+
+}
