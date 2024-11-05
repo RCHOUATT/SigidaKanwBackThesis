@@ -19,12 +19,35 @@ public class StatsApprenantServiceImpl implements StatsApprenantService {
         return statsApprenantrepo.findAll();
     }
 
+    /*@Override
+    public StatsApprenant MAJ(Long Id, StatsApprenant statsApprenant) {
+        return statsApprenantrepo.findByApprenant_Id(Id)
+                .map(p->{
+                if (statsApprenant.getPoint() != null){
+                    p.setPoint(p.getPoint() + statsApprenant.getPoint());
+                }
+                if (statsApprenant.getPiece() != null){
+                    p.setPiece(p.getPiece() + statsApprenant.getPiece());
+                }
+                if (statsApprenant.getNiveau() != null){
+                    p.setNiveau(statsApprenant.getNiveau());
+                }
+                return statsApprenantrepo.save(p);
+            }).orElseThrow(()->new RuntimeException("Erreur lors de la mise à jour des statuts de l'apprenant"));
+    }*/
     @Override
     public StatsApprenant MAJ(Long Id, StatsApprenant statsApprenant) {
         return statsApprenantrepo.findById(Id)
-            .map(p->{
-                p.setPoint(statsApprenant.getPoint());
-                p.setNiveau(statsApprenant.getNiveau());
+                .map(p->{
+                if (statsApprenant.getPoint() != null){
+                    p.setPoint(p.getPoint() + statsApprenant.getPoint());
+                }
+                if (statsApprenant.getPiece() != null){
+                    p.setPiece(p.getPiece() + statsApprenant.getPiece());
+                }
+                if (statsApprenant.getNiveau() != null){
+                    p.setNiveau(statsApprenant.getNiveau());
+                }
                 return statsApprenantrepo.save(p);
             }).orElseThrow(()->new RuntimeException("Erreur lors de la mise à jour des statuts de l'apprenant"));
     }

@@ -26,11 +26,11 @@ public class FilesService {
         String url = "";
         System.out.println("b : " + type);
         if (type.equals("image")){
-            url = service.upload(file, "resources/images_source/", type);
+            url = service.upload(file, "resources/image_ressource/", type);
         } else if (type.equals("video")) {
-            url = service.upload(file, "resources/audio_ressource/", type);
-        }else if (type.equals("audio")) {
             url = service.upload(file, "resources/video_ressource/", type);
+        }else if (type.equals("audio")) {
+            url = service.upload(file, "resources/audio_ressource/", type);
         }
         System.out.println("c : " + url);
         Files files = Files.builder()

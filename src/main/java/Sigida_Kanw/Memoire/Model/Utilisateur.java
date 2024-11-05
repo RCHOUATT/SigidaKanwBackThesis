@@ -52,10 +52,10 @@ public class Utilisateur implements UserDetails {
     //@JsonBackReference("usersLevel")
     private NiveauEtudes niveauEtudes;*/
 
-    /*@ManyToOne
+    @ManyToOne
     @JoinColumn(name = "stat")
     //@JsonManagedReference("usersRole")
-    private StatsApprenant stat;*/
+    private StatsApprenant stat;
 
     @ManyToOne
     private Files files;

@@ -35,12 +35,6 @@ public class user_service_impl implements Utilisateur_service {
             files = filesService.AjouterFile(image.get());
         }
 
-        StatsApprenant statsApprenant = StatsApprenant.builder()
-                .niveau(niveauEtudesRepo.findByNiveau("DEBUTANT"))
-                .point(0)
-                .piece(0)
-                .build();
-
         apprenant.setRole(roleUserRepo.findByRole("APPRENANT"));
         apprenant.setPassword(passwordEncoder.encode(apprenant.getPassword()));
 
@@ -49,10 +43,14 @@ public class user_service_impl implements Utilisateur_service {
             apprenant.setFiles(files);
         }
 
-        apprenant.setStats(statsApprenant);
-        statsApprenantRepo.save(statsApprenant);
         Apprenant user = utilisateurRepo.save(apprenant);
 
+        StatsApprenant statsApprenant = StatsApprenant.builder()
+                .niveau(niveauEtudesRepo.findByNiveau("DEBUTANT"))
+                .point(0)
+                .piece(0)
+                .build();
+        statsApprenantRepo.save(statsApprenant);
         ActiviteUtilisateur userActivity = ActiviteUtilisateur.builder()
                 .dateUtilisation(Instant.now())
                 .utilisateur(user)

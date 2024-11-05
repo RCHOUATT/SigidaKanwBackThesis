@@ -174,7 +174,7 @@ public class MemoireApplication {
 				admin.setGenreUser(genreUser);
 				admin.setPays(pay);
 				Files files = Files.builder()
-						.url("http://localhost:8081/sigidaKanw/resources/images_source/13374641.png")
+						.url("http://localhost:8081/sigidaKanw/resources/image_ressource/13374641.png")
 						.type("image/png")
 						.build();
 

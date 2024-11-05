@@ -17,8 +17,7 @@ import java.util.List;
 @Entity
 public class Apprenant extends Utilisateur{
 
-    @OneToOne(mappedBy = "apprenant", cascade = CascadeType.REMOVE, orphanRemoval = true)
-    @JsonManagedReference("statApprenant")
+    @OneToOne
     private StatsApprenant stats;
 
     @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)

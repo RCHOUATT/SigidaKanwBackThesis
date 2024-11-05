@@ -24,10 +24,10 @@ public class StatsApprenant {
     @ManyToOne
     private NiveauEtudes niveau;
 
-    @OneToOne
+    /*@OneToOne
     @JoinColumn(name = "apprenant_Id")
     @JsonBackReference("statApprenant")
-    private Apprenant apprenant;
+    private Apprenant apprenant;*/
 
     //@OneToMany(mappedBy = "status")
     // @JsonManagedReference("notifR")
