@@ -19,6 +19,8 @@ public class Contenu {
     @Id
     private Long id;
     private String titre;
+
+    @Column(length = 3000)
     private String description;
 
     @ManyToOne

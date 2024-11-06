@@ -7,6 +7,7 @@ import Sigida_Kanw.Memoire.Model.Utilisateur;
 import Sigida_Kanw.Memoire.Security.UserDetailServiceConfig;
 import Sigida_Kanw.Memoire.Service.ContexHolder;
 import Sigida_Kanw.Memoire.Service.Implement.ApprenantService;
+import Sigida_Kanw.Memoire.Service.Implement.user_service_impl;
 import Sigida_Kanw.Memoire.Service.Utilisateur_service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
@@ -26,6 +27,7 @@ import java.util.Optional;
 public class utilisateurController {
 
     private Utilisateur_service utilisateur_service;
+    private user_service_impl user_service_impl;
     private ContexHolder contexHolder;
     private ObjectMapper objectMapper;
     private UserDetailServiceConfig userDetailService;
@@ -112,6 +114,12 @@ public class utilisateurController {
     @GetMapping("/User/{id}")
     Utilisateur displayUser(@PathVariable Long id){
         return utilisateur_service.display(id);
+    }
+
+    @GetMapping("/top10")
+    public ResponseEntity<List<Utilisateur>> getTop10Students() {
+        List<Utilisateur> top10Students = user_service_impl.getTop10StudentsByPoints();
+        return ResponseEntity.ok(top10Students);
     }
 
     @GetMapping("/TriParNom")

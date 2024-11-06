@@ -5,6 +5,8 @@ import Sigida_Kanw.Memoire.Model.*;
 import Sigida_Kanw.Memoire.Repository.*;
 import Sigida_Kanw.Memoire.Service.Utilisateur_service;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -125,6 +127,12 @@ public class user_service_impl implements Utilisateur_service {
     @Override
     public Utilisateur display(Long id) {
         return utilisateurRepo.findById(id).get();
+    }
+
+    public List<Utilisateur> getTop10StudentsByPoints() {
+        // Limiter à 10 utilisateurs
+        Pageable topTen = PageRequest.of(0, 10);
+        return utilisateurRepo.findTop10ByOrderByPointDesc(topTen);
     }
 
     @Override
